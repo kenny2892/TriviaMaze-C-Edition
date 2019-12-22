@@ -12,6 +12,29 @@
         Background="{DynamicResource MaterialDesignPaper}"
         Title="Trivia Maze" Height="720" Width="1280" Icon="/Images/Icon.png" WindowStartupLocation="CenterScreen">
 
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="{Binding UiBrushUnSelected}"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding UiBrushSelected}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
     <Grid Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.25*"/>
@@ -21,35 +44,52 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
-            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.45*"/>
         </Grid.RowDefinitions>
 
-        <Image HorizontalAlignment="Center" VerticalAlignment="Center" gif:ImageBehavior.AnimatedSource="/Images/Maze.gif" Grid.Column="1"/>
-        <Viewbox Grid.Column="1" Grid.Row="1" Stretch="Uniform">
-            <Button Height="100" Width="400" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Rectangle>
-                            <Rectangle.OpacityMask>
-                                <ImageBrush ImageSource="/Images/Main_Buttons/Customize.png"/>
-                            </Rectangle.OpacityMask>
-                            <Rectangle.Style>
-                                <Style TargetType="{x:Type Rectangle}">
-                                    <Setter Property="Fill" Value="{Binding UiBrushUnSelected}"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Fill" Value="{Binding UiBrushSelected}"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Rectangle.Style>
-                        </Rectangle>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-        </Viewbox>
+        <Image HorizontalAlignment="Center" VerticalAlignment="Center" gif:ImageBehavior.AnimatedSource="/Images/Maze.gif" Grid.Column="1" Margin="0,0,0,25"/>
 
-        <xctk:ColorPicker SelectedColor="{Binding UiColorUnSelected}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" DisplayColorAndName="True"/>
-        <xctk:ColorPicker SelectedColor="{Binding UiColorSelected}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" DisplayColorAndName="True"/>
+        <xctk:ColorPicker SelectedColor="{Binding UiColorUnSelected}" HorizontalAlignment="Stretch" VerticalAlignment="Top" DisplayColorAndName="True"/>
+        <xctk:ColorPicker SelectedColor="{Binding UiColorSelected}" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" DisplayColorAndName="True"/>
+
+        <Grid Grid.Column="1" Grid.Row="1" Margin="0,0,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.25*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.25*"/>
+                <ColumnDefinition Width="0.9*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="CustomizeBtn" Grid.Column="0" Cursor="Hand" Margin="0,0,25,0">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Images/Main_Buttons/Customize.png"/>
+                </Button.OpacityMask>
+            </Button>
+
+            <Button Name="SaveBtn" Grid.Column="1" Cursor="Hand" Margin="0,0,25,0">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Images/Main_Buttons/Save.png"/>
+                </Button.OpacityMask>
+            </Button>
+
+            <Button Name="LoadBtn" Grid.Column="2" Cursor="Hand" Margin="0,0,25,0">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Images/Main_Buttons/Load.png"/>
+                </Button.OpacityMask>
+            </Button>
+
+            <Button Name="SettingsBtn" Grid.Column="3" Cursor="Hand" Margin="0,0,25,0">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Images/Main_Buttons/Settings.png"/>
+                </Button.OpacityMask>
+            </Button>
+
+            <Button Name="HelpBtn" Grid.Column="4" Cursor="Hand">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Images/Main_Buttons/Help.png"/>
+                </Button.OpacityMask>
+            </Button>
+        </Grid>
     </Grid>
 </Window>

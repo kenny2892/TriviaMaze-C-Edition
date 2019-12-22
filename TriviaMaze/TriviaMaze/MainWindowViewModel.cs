@@ -1,11 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace TriviaMaze
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private Color _UiColor = Colors.Yellow;
         private Brush _UiBrushSelected = Brushes.Yellow;
         private Brush _UiBrushUnSelected = Brushes.Orange;
 
