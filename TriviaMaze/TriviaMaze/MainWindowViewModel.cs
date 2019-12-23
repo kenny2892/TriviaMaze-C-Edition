@@ -1,46 +1,50 @@
 ﻿using GalaSoft.MvvmLight;
 using System.Windows.Input;
 using System.Windows.Media;
+using TriviaMaze.ViewModels;
 
 namespace TriviaMaze
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private Brush _UiBrushSelected = Brushes.Yellow;
-        private Brush _UiBrushUnSelected = Brushes.Orange;
+        private MapViewModel MapVm { get; }
+        private CustomizeViewModel CustomizeVm { get; }
 
-        private Color _UiColorSelected = Colors.Yellow;
-        private Color _UiColorUnSelected = Colors.Orange;
+        private object _CurrentVm;
 
-        public Brush UiBrushSelected
+        public object CurrentVm
         {
-            get => _UiBrushSelected;
-            set => Set(ref _UiBrushSelected, value);
+            get => _CurrentVm;
+            set => Set(ref _CurrentVm, value);
         }
 
-        public Brush UiBrushUnSelected
+        public MainWindowViewModel()
         {
-            get => _UiBrushUnSelected;
-            set => Set(ref _UiBrushUnSelected, value);
+            MapVm = new MapViewModel(NavigateViews);
+            CustomizeVm = new CustomizeViewModel(NavigateViews);
+
+            CurrentVm = MapVm;
         }
 
-        public Color UiColorSelected
+        private void NavigateViews(GameViewAction action)
         {
-            get => _UiColorSelected;
-            set
+            switch (action)
             {
-                Set(ref _UiColorSelected, value);
-                UiBrushSelected = new SolidColorBrush(value);
-            }
-        }
+                case GameViewAction.Customize:
+                    CustomizeVm.UiColorSelected = MapVm.UiColorSelected;
+                    CustomizeVm.UiColorUnSelected = MapVm.UiColorUnSelected;
+                    CurrentVm = CustomizeVm;
+                    break;
 
-        public Color UiColorUnSelected
-        {
-            get => _UiColorUnSelected;
-            set
-            {
-                Set(ref _UiColorUnSelected, value);
-                UiBrushUnSelected = new SolidColorBrush(value);
+                case GameViewAction.Map:
+                    if(MapVm.UiColorSelected != CustomizeVm.UiColorSelected)
+                        MapVm.UiColorSelected = CustomizeVm.UiColorSelected;
+
+                    if(MapVm.UiColorUnSelected != CustomizeVm.UiColorUnSelected)
+                        MapVm.UiColorUnSelected = CustomizeVm.UiColorUnSelected;
+
+                    CurrentVm = MapVm;
+                    break;
             }
         }
     }

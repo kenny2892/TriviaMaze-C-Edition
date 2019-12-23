@@ -36,3 +36,8 @@ C:\Users\Kenny\Documents\git\TriviaMaze-C-Edition\TriviaMaze\TriviaMaze\bin\Debu
 C:\Users\Kenny\Documents\git\TriviaMaze-C-Edition\TriviaMaze\TriviaMaze\bin\Debug\netcoreapp3.0\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Kenny\Documents\git\TriviaMaze-C-Edition\TriviaMaze\TriviaMaze\bin\Debug\netcoreapp3.0\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Kenny\Documents\git\TriviaMaze-C-Edition\TriviaMaze\TriviaMaze\bin\Debug\netcoreapp3.0\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Kenny\Documents\git\TriviaMaze-C-Edition\TriviaMaze\TriviaMaze\obj\Debug\netcoreapp3.0\Views\CustomizeView.g.cs
+C:\Users\Kenny\Documents\git\TriviaMaze-C-Edition\TriviaMaze\TriviaMaze\obj\Debug\netcoreapp3.0\Views\MapView.g.cs
+C:\Users\Kenny\Documents\git\TriviaMaze-C-Edition\TriviaMaze\TriviaMaze\obj\Debug\netcoreapp3.0\GeneratedInternalTypeHelper.g.cs
+C:\Users\Kenny\Documents\git\TriviaMaze-C-Edition\TriviaMaze\TriviaMaze\obj\Debug\netcoreapp3.0\Views\CustomizeView.baml
+C:\Users\Kenny\Documents\git\TriviaMaze-C-Edition\TriviaMaze\TriviaMaze\obj\Debug\netcoreapp3.0\Views\MapView.baml

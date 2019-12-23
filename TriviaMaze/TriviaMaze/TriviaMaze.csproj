@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Checkmark.png" />
     <None Remove="Images\Goal.png" />
     <None Remove="Images\Icon.png" />
     <None Remove="Images\Main_Buttons\Customize.png" />
@@ -16,6 +17,7 @@
     <None Remove="Images\Main_Buttons\Settings.png" />
     <None Remove="Images\Maze.gif" />
     <None Remove="Images\Settings.png" />
+    <None Remove="Images\X.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Checkmark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Goal.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -53,6 +58,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Settings.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\X.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

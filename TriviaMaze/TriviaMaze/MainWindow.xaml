@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriviaMaze"
-        xmlns:gif="http://wpfanimatedgif.codeplex.com"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:vm="clr-namespace:TriviaMaze.ViewModels"
+        xmlns:view="clr-namespace:TriviaMaze.Views"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -13,6 +13,14 @@
         Title="Trivia Maze" Height="720" Width="1280" Icon="/Images/Icon.png" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:MapViewModel}">
+            <view:MapView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:CustomizeViewModel}">
+            <view:CustomizeView/>
+        </DataTemplate>
+
         <Style TargetType="{x:Type Button}">
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="{Binding UiBrushUnSelected}"/>
@@ -47,49 +55,6 @@
             <RowDefinition Height="0.45*"/>
         </Grid.RowDefinitions>
 
-        <Image HorizontalAlignment="Center" VerticalAlignment="Center" gif:ImageBehavior.AnimatedSource="/Images/Maze.gif" Grid.Column="1" Margin="0,0,0,25"/>
-
-        <xctk:ColorPicker SelectedColor="{Binding UiColorUnSelected}" HorizontalAlignment="Stretch" VerticalAlignment="Top" DisplayColorAndName="True"/>
-        <xctk:ColorPicker SelectedColor="{Binding UiColorSelected}" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" DisplayColorAndName="True"/>
-
-        <Grid Grid.Column="1" Grid.Row="1" Margin="0,0,0,5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.25*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="1.25*"/>
-                <ColumnDefinition Width="0.9*"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Name="CustomizeBtn" Grid.Column="0" Cursor="Hand" Margin="0,0,25,0">
-                <Button.OpacityMask>
-                    <ImageBrush ImageSource="/Images/Main_Buttons/Customize.png"/>
-                </Button.OpacityMask>
-            </Button>
-
-            <Button Name="SaveBtn" Grid.Column="1" Cursor="Hand" Margin="0,0,25,0">
-                <Button.OpacityMask>
-                    <ImageBrush ImageSource="/Images/Main_Buttons/Save.png"/>
-                </Button.OpacityMask>
-            </Button>
-
-            <Button Name="LoadBtn" Grid.Column="2" Cursor="Hand" Margin="0,0,25,0">
-                <Button.OpacityMask>
-                    <ImageBrush ImageSource="/Images/Main_Buttons/Load.png"/>
-                </Button.OpacityMask>
-            </Button>
-
-            <Button Name="SettingsBtn" Grid.Column="3" Cursor="Hand" Margin="0,0,25,0">
-                <Button.OpacityMask>
-                    <ImageBrush ImageSource="/Images/Main_Buttons/Settings.png"/>
-                </Button.OpacityMask>
-            </Button>
-
-            <Button Name="HelpBtn" Grid.Column="4" Cursor="Hand">
-                <Button.OpacityMask>
-                    <ImageBrush ImageSource="/Images/Main_Buttons/Help.png"/>
-                </Button.OpacityMask>
-            </Button>
-        </Grid>
+        <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding CurrentVm}"/>
     </Grid>
 </Window>

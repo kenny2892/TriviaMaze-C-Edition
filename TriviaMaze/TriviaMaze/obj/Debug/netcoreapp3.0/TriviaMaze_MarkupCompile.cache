@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_0
 C:\Users\Kenny\Documents\git\TriviaMaze-C-Edition\TriviaMaze\TriviaMaze\App.xaml
-11151548125
+3-290719040
 
-31359500427
+9-1040360374
 2011222941945
-MainWindow.xaml;
+MainWindow.xaml;Views\CustomizeView.xaml;Views\MapView.xaml;
 
 False
 
