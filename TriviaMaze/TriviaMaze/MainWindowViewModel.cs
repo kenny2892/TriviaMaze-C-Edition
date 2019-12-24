@@ -33,6 +33,8 @@ namespace TriviaMaze
                 case GameViewAction.Customize:
                     CustomizeVm.UiColorSelected = MapVm.UiColorSelected;
                     CustomizeVm.UiColorUnSelected = MapVm.UiColorUnSelected;
+                    CustomizeVm.DoorColorSelected = MapVm.DoorColorSelected;
+                    CustomizeVm.DoorColorUnSelected = MapVm.DoorColorUnSelected;
                     CurrentVm = CustomizeVm;
                     break;
 
@@ -42,6 +44,12 @@ namespace TriviaMaze
 
                     if(MapVm.UiColorUnSelected != CustomizeVm.UiColorUnSelected)
                         MapVm.UiColorUnSelected = CustomizeVm.UiColorUnSelected;
+
+                    if (MapVm.DoorColorUnSelected != CustomizeVm.DoorColorUnSelected)
+                        MapVm.DoorColorUnSelected = CustomizeVm.DoorColorUnSelected;
+
+                    if (MapVm.DoorColorSelected != CustomizeVm.DoorColorSelected)
+                        MapVm.DoorColorSelected = CustomizeVm.DoorColorSelected;
 
                     CurrentVm = MapVm;
                     break;

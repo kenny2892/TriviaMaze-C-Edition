@@ -7,48 +7,141 @@
              xmlns:gif="http://wpfanimatedgif.codeplex.com"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style x:Key="DoorButton" TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="{Binding DoorBrushUnSelected}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding DoorBrushSelected}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MainButton" TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="{Binding UiBrushUnSelected}"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding UiBrushSelected}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="0.45*"/>
         </Grid.RowDefinitions>
 
-        <Image HorizontalAlignment="Center" VerticalAlignment="Center" gif:ImageBehavior.AnimatedSource="/Images/Maze.gif" Grid.Row="0" Margin="0,0,0,25"/>
+        <Viewbox>
+            <ItemsControl ItemsSource="{Binding DoorwayCollection}" Width="65" Height="33" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                        <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Width="{Binding Width}" Height="{Binding Height}" Source="{Binding Source}" gif:ImageBehavior.AnimatedSource="{Binding AnimatedSource}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Viewbox>
+
+        <Viewbox>
+            <Canvas Width="72" Height="36">
+                <Button Style="{StaticResource DoorButton}" Height="6" Width="4" Canvas.Left="34.5" Canvas.Top="0.8">
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="/Images/Door.png"/>
+                    </Button.OpacityMask>
+                </Button>
+
+                <Button Style="{StaticResource DoorButton}" Height="6" Width="4" Canvas.Left="34.5" Canvas.Top="29.5">
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="/Images/Door.png"/>
+                    </Button.OpacityMask>
+                </Button>
+
+                <Button Style="{StaticResource DoorButton}" Height="6" Width="4" Canvas.Left="19" Canvas.Top="12">
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="/Images/Door.png"/>
+                    </Button.OpacityMask>
+                </Button>
+
+                <Button Style="{StaticResource DoorButton}" Height="6" Width="4" Canvas.Left="50" Canvas.Top="12">
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="/Images/Door.png"/>
+                    </Button.OpacityMask>
+                </Button>
+            </Canvas>
+        </Viewbox>
 
         <Grid Grid.Row="1" Margin="0,0,0,5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.25*"/>
+                <ColumnDefinition Width="1.4*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="1.25*"/>
+                <ColumnDefinition Width="1.4*"/>
                 <ColumnDefinition Width="0.9*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="CustomizeBtn" Grid.Column="0" Cursor="Hand" Margin="0,0,25,0" Command="{Binding CustomizeBtn}">
+            <Button Name="CustomizeBtn" Style="{StaticResource MainButton}" Grid.Column="0" Cursor="Hand" Margin="0,0,25,0" Command="{Binding CustomizeBtn}">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Images/Main_Buttons/Customize.png"/>
                 </Button.OpacityMask>
             </Button>
 
-            <Button Name="SaveBtn" Grid.Column="1" Cursor="Hand" Margin="0,0,25,0">
+            <Button Name="SaveBtn" Style="{StaticResource MainButton}" Grid.Column="1" Cursor="Hand" Margin="0,0,25,0" Command="{Binding AddDoorway}">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Images/Main_Buttons/Save.png"/>
                 </Button.OpacityMask>
             </Button>
 
-            <Button Name="LoadBtn" Grid.Column="2" Cursor="Hand" Margin="0,0,25,0">
+            <Button Name="LoadBtn" Style="{StaticResource MainButton}" Grid.Column="2" Cursor="Hand" Margin="0,0,25,0">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Images/Main_Buttons/Load.png"/>
                 </Button.OpacityMask>
             </Button>
 
-            <Button Name="SettingsBtn" Grid.Column="3" Cursor="Hand" Margin="0,0,25,0">
+            <Button Name="SettingsBtn" Style="{StaticResource MainButton}" Grid.Column="3" Cursor="Hand" Margin="0,0,25,0">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Images/Main_Buttons/Settings.png"/>
                 </Button.OpacityMask>
             </Button>
 
-            <Button Name="HelpBtn" Grid.Column="4" Cursor="Hand">
+            <Button Name="HelpBtn" Style="{StaticResource MainButton}" Grid.Column="4" Cursor="Hand">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Images/Main_Buttons/Help.png"/>
                 </Button.OpacityMask>

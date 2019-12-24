@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Images\Checkmark.png" />
+    <None Remove="Images\Door.png" />
     <None Remove="Images\Goal.png" />
     <None Remove="Images\Icon.png" />
     <None Remove="Images\Main_Buttons\Customize.png" />
@@ -31,6 +32,9 @@
 
   <ItemGroup>
     <Resource Include="Images\Checkmark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Door.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Goal.png">

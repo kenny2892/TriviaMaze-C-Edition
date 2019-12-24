@@ -8,8 +8,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <xctk:ColorPicker SelectedColor="{Binding UiColorUnSelected}" HorizontalAlignment="Stretch" VerticalAlignment="Top" DisplayColorAndName="True"/>
-        <xctk:ColorPicker SelectedColor="{Binding UiColorSelected}" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayColorAndName="True"/>
-        <Button VerticalAlignment="Bottom" Content="Back" Command="{Binding MapBtn}" Background="White" Foreground="Black" Margin="0,0,0,50"/>
+        <StackPanel>
+            <TextBlock Text="Main Buttons" TextAlignment="Center" FontSize="24"/>
+            <xctk:ColorPicker SelectedColor="{Binding UiColorUnSelected}" HorizontalAlignment="Stretch" VerticalAlignment="Top" DisplayColorAndName="True"/>
+            <xctk:ColorPicker SelectedColor="{Binding UiColorSelected}" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayColorAndName="True"/>
+            <TextBlock Text="Doors" TextAlignment="Center" FontSize="24" Margin="0,17,0,0"/>
+            <xctk:ColorPicker SelectedColor="{Binding DoorColorUnSelected}" HorizontalAlignment="Stretch" VerticalAlignment="Top" DisplayColorAndName="True"/>
+            <xctk:ColorPicker SelectedColor="{Binding DoorColorSelected}" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayColorAndName="True"/>
+            <Button VerticalAlignment="Bottom" Content="Back" Command="{Binding MapBtn}" Background="White" Foreground="Black" Margin="0,35,0,50"/>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -20,27 +20,6 @@
         <DataTemplate DataType="{x:Type vm:CustomizeViewModel}">
             <view:CustomizeView/>
         </DataTemplate>
-
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Background" Value="{Binding UiBrushUnSelected}"/>
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{Binding UiBrushSelected}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Window.Resources>
     
     <Grid Background="Black">
